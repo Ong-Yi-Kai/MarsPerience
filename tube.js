@@ -1,4 +1,4 @@
-var onSite = false;
+var bgColor = "black";
 
 AFRAME.registerComponent('pane-hover', {
 
@@ -21,36 +21,15 @@ AFRAME.registerComponent('pane-hover', {
         let skyLeft = el.sceneEl.querySelector('#skyLeft')
         let skyRight = el.sceneEl.querySelector('#skyRight')
 
-        if (!onSite) {
+        // change sky to stereo images 
+        skyLeft.setAttribute("color", "")
+        skyRight.setAttribute("color", "")
+        skyLeft.setAttribute("src", this.data.leftStereo)
+        skyRight.setAttribute("src", this.data.rightStereo)
 
-          // change sky to stereo images 
-          skyLeft.setAttribute("color", "")
-          skyRight.setAttribute("color", "")
-          skyLeft.setAttribute("src", this.data.leftStereo)
-          skyRight.setAttribute("src", this.data.rightStereo)
-
-          // hide all other image plane elements
-          let allElements = el.sceneEl.querySelectorAll('[id^="img-plane"]')
-          allElements.forEach(element => {
-            if (element.getAttribute('id') !== el.getAttribute('id')) {
-              element.setAttribute('visible', 'false')
-            }
-            onSite = true;
-          })
-        } else {
-          // reset all image plane elements
-          let allElements = el.sceneEl.querySelectorAll('[id^="img-plane"]')
-          allElements.forEach(element => {
-            element.setAttribute('visible', 'true')
-          })
-
-          // reset sky to black
-          skyLeft.setAttribute("src", "")
-          skyRight.setAttribute("src", "")
-          skyLeft.setAttribute("color", "black")
-          skyRight.setAttribute("color", "black")
-          onSite = false;
-        }
+        // hide all other image plane elements
+        let allElements = el.sceneEl.querySelectorAll('[id^="img-plane"]')
+        allElements.forEach(element => { element.setAttribute('visible', 'false') })
       }
     }
 
@@ -64,3 +43,35 @@ AFRAME.registerComponent('pane-hover', {
     this.el.removeEventListener('click', this.changeBackground)
   }
 });
+
+
+AFRAME.registerComponent('return-to-main', {
+  sceneOnly: true,
+  init: function () {
+    let el = this.el;
+    this.returnToMain = (evt) => {
+      let skyLeft = el.querySelector('#skyLeft')
+      let skyRight = el.querySelector('#skyRight')
+      let allElements = el.querySelectorAll('[id^="img-plane"]')
+
+      // show all sample tubes
+      allElements.forEach(element => { element.setAttribute('visible', 'true') })
+
+      // reset the background to black
+      skyLeft.setAttribute("src", "")
+      skyRight.setAttribute("src", "")
+      skyLeft.setAttribute("color", "black")
+      skyRight.setAttribute("color", "black")
+
+      // point camera back to the center
+      let camera = el.querySelector('#rig')
+      camera.setAttribute('rotation', { x: 0, y: 0, z: 0 })
+    }
+    el.addEventListener('abuttondown', this.returnToMain)
+    el.addEventListener('bbuttondown', this.returnToMain)
+  },
+  remove: function () {
+    this.el.removeEventListener('abuttondown', this.returnToMain)
+    this.el.removeEventListener('bsbuttondown', this.returnToMain)
+  }
+})
