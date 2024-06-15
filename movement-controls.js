@@ -27,11 +27,10 @@ AFRAME.registerComponent('thumbstick-rot-logging', {
   init: function () {
 
     this.logThumbstick = function (evt) {
-      // let deltaPX = evt.detail.x;
-      // let deltaPY = evt.detail.y;
-      // deltaElevation = (Math.atan(deltaPX, Math.abs(deltaPY)) * 180) / Math.PI;
       deltaAzimuth = evt.detail.x * 90;
       deltaElevation = evt.detail.y * 90;
+
+      console.log("deltaAzimuth: " + deltaAzimuth + ", deltaElevation: " + deltaElevation);
     }
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
