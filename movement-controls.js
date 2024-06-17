@@ -54,6 +54,8 @@ AFRAME.registerComponent('thumbstick-zoom-logging', {
 AFRAME.registerComponent('thumbstick-controlled-motion', {
   tick: function () {
     let el = this.el;
+    let compass = el.querySelector('#compass');
+
     let pos = el.getAttribute('position');
     let r = el.getAttribute('rotation');
     let yaw = r.y * Math.PI / 180;
@@ -69,6 +71,26 @@ AFRAME.registerComponent('thumbstick-controlled-motion', {
     el.setAttribute('rotation', { x: r.x, y: newYaw, z: r.z })
   }
 });
+
+AFRAME.registerComponent('thumbstick-controlled-compass', {
+  tick: function () {
+    let compass = this.el;
+    let r = compass.getAttribute('rotation');
+
+    let newRoll = r.z + deltaAzimuth * rotation_speed;
+    compass.setAttribute('rotation', { x: r.x, y: r.y, z: newRoll })
+
+    // for each child of the compass, rotate it back to the original orientation
+    let children = compass.children;
+    for (let i = 0; i < children.length; i++) {
+      let child = children[i];
+      let cr = child.getAttribute('rotation');
+      let newCRoll = cr.z - deltaAzimuth * rotation_speed;
+      child.setAttribute('rotation', { x: cr.x, y: cr.y, z: newCRoll })
+    }
+  }
+});
+
 
 // Determines how ROVER follows the camera 
 AFRAME.registerComponent('camera-follower', {

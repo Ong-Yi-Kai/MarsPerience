@@ -8,11 +8,81 @@
   <script src="js/aframe-troika-text.min.js"></script>
   <script src="tube.js"></script>
   <script src="movement-controls.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const imgPlanesData = [
+        { id: 'img-plane-1', position: '-15 7.5 -25', leftStereo: "#left1", rightStereo: "#right1", tubeModel: "#tube1", text: "Seitah (Pre)" },
+        { id: 'img-plane-2', position: '-5 7.5 -25', leftStereo: "#left2", rightStereo: "#right2", tubeModel: "#tube2", text: "Seitah (Post)" },
+        { id: 'img-plane-3', position: '5 7.5 -25', leftStereo: "#left3", rightStereo: "#right3", tubeModel: "#tube3", text: "Amalik" },
+        { id: 'img-plane-4', position: '15 7.5 -25', leftStereo: "#left4", rightStereo: "#right4", tubeModel: "#tube4", text: "Roubion" },
+
+        { id: 'img-plane-5', position: '-15 2.5 -25', leftStereo: "#left5", rightStereo: "#right5", tubeModel: "#tube5", text: "Brac" },
+        { id: 'img-plane-6', position: '-5 2.5 -25', leftStereo: "#left6", rightStereo: "#right6", tubeModel: "#tube6", text: "Rochette" },
+        { id: 'img-plane-7', position: '5 2.5 -25', leftStereo: "#left7", rightStereo: "#right7", tubeModel: "#tube7", text: "Wildcat Ridge" },
+        { id: 'img-plane-8', position: '15 2.5 -25', leftStereo: "#left8", rightStereo: "#right8", tubeModel: "#tube8", text: "Skinner Ridge" },
+
+        { id: 'img-plane-9', position: '-15 -2.5 -25', leftStereo: "#left9", rightStereo: "#right9", tubeModel: "#tube9", text: "Sid (Pre)" },
+        { id: 'img-plane-10', position: '-5 -2.5 -25', leftStereo: "#left10", rightStereo: "#right10", tubeModel: "#tube10", text: "Hidden Harbor" },
+        { id: 'img-plane-11', position: '5 -2.5 -25', leftStereo: "#left11", rightStereo: "#right11", tubeModel: "#tube11", text: "Three Forks 1" },
+        { id: 'img-plane-12', position: '15 -2.5 -25', leftStereo: "#left12", rightStereo: "#right12", tubeModel: "#tube12", text: "Three Forks 2" },
+
+        { id: 'img-plane-13', position: '-15 -7.5 -25', leftStereo: "#left13", rightStereo: "#right13", tubeModel: "#tube13", text: "Belva Crater" },
+        { id: 'img-plane-14', position: '-5 -7.5 -25', leftStereo: "#left14", rightStereo: "#right14", tubeModel: "#tube14", text: "Bessieres Island" },
+        { id: 'img-plane-15', position: '5 -7.5 -25', leftStereo: "#left15", rightStereo: "#right15", tubeModel: "#tube15", text: "Bunsen Peak" },
+        { id: 'img-plane-16', position: '15 -7.5 -25', leftStereo: "#left16", rightStereo: "#right16", tubeModel: "#tube16", text: "Hidden Mountain" }
+
+      ];
+
+      // parent entity
+      const sceneEl = document.querySelector('a-scene');
+
+      // append img-planes to the scene
+      imgPlanesData.forEach(data => {
+        const imgPlaneEl = document.createElement('a-entity');
+        imgPlaneEl.setAttribute('id', data.id);
+        imgPlaneEl.setAttribute('position', data.position);
+        imgPlaneEl.setAttribute('pane-hover', `leftStereo: ${data.leftStereo}; rightStereo: ${data.rightStereo}`);
+
+        // overlapping box
+        const boxEl = document.createElement('a-box');
+        boxEl.setAttribute('position', '0 1 0');
+        boxEl.setAttribute('width', '3');
+        boxEl.setAttribute('height', '5');
+        boxEl.setAttribute('material', 'transparent: true; opacity: 0');
+        boxEl.setAttribute('class', 'raycastable');
+
+        // sample tube model
+        const tubeEl = document.createElement('a-entity');
+        tubeEl.setAttribute('gltf-model', data.tubeModel);
+        tubeEl.setAttribute('scale', '0.5 0.5 0.5');
+        tubeEl.setAttribute('position', '0 0 0');
+
+        // text element
+        const textEl = document.createElement('a-troika-text');
+        textEl.setAttribute('align', 'center');
+        textEl.setAttribute('position', '0 -1 1');
+        textEl.setAttribute('fontsize', '10');
+        textEl.setAttribute('scale', '4 4 4');
+        textEl.setAttribute('value', data.text);
+        textEl.setAttribute('material', 'shader: standard; metalness: 0.7; roughness: 0.1; color: white');
+
+        boxEl.appendChild(tubeEl);
+        boxEl.appendChild(textEl);
+        imgPlaneEl.appendChild(boxEl);
+        sceneEl.appendChild(imgPlaneEl);
+
+        // hide compass
+
+      });
+    });
+  </script>
+
 </head>
 
 <body>
 
-  <a-scene cursor="rayOrigin: mouse" return-to-main>
+  <a-scene cursor="rayOrigin: mouse" return-to-main view-compass>
     <!-- Assets -->
     <a-assets>
       <!-- <img id="tube1" src="assets/sample_tube/tube1.png" /> -->
@@ -85,165 +155,32 @@
       <img id="left15" src="assets/stereos/processed_8K/Bunsen_Peak_left.jpg" crossorigin="anonymous">
       <img id="right15" src="assets/stereos/processed_8K/Bunsen_Peak_right.jpg" crossorigin="anonymous">
 
+      <a-asset-items id="tube16" src="./assets/sample_tube_generic/tube.glb"></a-asset-items>
+      <img id="left16" src="assets/stereos/processed_8K/hidden_mountatin_left.jpg" crossorigin="anonymous">
+      <img id="right16" src="assets/stereos/processed_8K/hidden_mountatin_right.jpg" crossorigin="anonymous">
+
+      <img id="compass" src="assets/compass.png" crossorigin="anonymous">
+
     </a-assets>
 
-
-    <!-- image 1 -->
-    <a-entity id="img-plane-1" position="-10 5 -30" pane-hover="leftStereo:#left1; rightStereo:#right1">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube1" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text align="center" position="0 -1 1" fontsize=10 value="Seitah (Pre)"
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 2 -->
-    <a-entity id="img-plane-2" position="-5 5 -30" pane-hover="leftStereo:#left2; rightStereo:#right2">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube2" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Seitah (Post)" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 3 -->
-    <a-entity id="img-plane-3" position="0 5 -30" pane-hover="leftStereo:#left3; rightStereo:#right3">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube3" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Amalik" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 4 -->
-    <a-entity id="img-plane-4" position="5 5 -30" pane-hover="leftStereo:#left4; rightStereo:#right4">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube4" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Roubion" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 5 -->
-    <a-entity id="img-plane-5" position="10 5 -30" pane-hover="leftStereo:#left5; rightStereo:#right5">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube5" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Brac" align="center" position="-0.8 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 6 -->
-    <a-entity id="img-plane-6" position="-10 0 -30" pane-hover="leftStereo:#left6; rightStereo:#right6">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube6" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Rochette" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-
-      </a-box>
-    </a-entity>
-
-    <!-- image 7 -->
-    <a-entity id="img-plane-7" position="-5 0 -30" pane-hover="leftStereo:#left7; rightStereo:#right7">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube7" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Wildcat Ridge" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 8 -->
-    <a-entity id="img-plane-8" position="0 0 -30" pane-hover="leftStereo:#left8; rightStereo:#right8">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube8" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Skinner Ridge" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 9 -->
-    <a-entity id="img-plane-9" position="5 0 -30" pane-hover="leftStereo:#left9; rightStereo:#right9">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube9" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Sid (Pre)" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 10 -->
-    <a-entity id="img-plane-10" position="10 0 -30" pane-hover="leftStereo:#left10; rightStereo:#right10">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube10" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Hidden Harbor" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 11 -->
-    <a-entity id="img-plane-11" position="-10 -5 -30" pane-hover="leftStereo:#left11; rightStereo:#right11">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube11" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Three Forks 1" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 12 -->
-    <a-entity id="img-plane-12" position="-5 -5 -30" pane-hover="leftStereo:#left12; rightStereo:#right12">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube12" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Three Forks 2" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 13 -->
-    <a-entity id="img-plane-13" position="0 -5 -30" pane-hover="leftStereo:#left13; rightStereo:#right13">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube13" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Belva Crater" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 14 -->
-    <a-entity id="img-plane-14" position="5 -5 -30" pane-hover="leftStereo:#left14; rightStereo:#right14">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube14" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Bessieres" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
-
-    <!-- image 15 -->
-    <a-entity id="img-plane-15" position="10 -5 -30" pane-hover="leftStereo:#left15; rightStereo:#right15">
-      <a-box position="0 1 0" width="3" height="5" material="transparent: true; opacity: 0" class="raycastable">
-        <a-entity gltf-model="#tube3" scale="0.5 0.5 0.5" position="-0.5 0 0"
-          material="shader:standard; emissive: white; emissiveIntensity: 0.5"></a-entity>
-        <a-troika-text value="Bunsen Peak" align="center" position="0 -1 1" fontsize=10
-          material="shader: standard; metalness: 0.8;" scale="3 3 3"></a-troika-text>
-      </a-box>
-    </a-entity>
 
     <!-- Sky map -->
     <a-sky id="skyLeft" color="black" stereo="eye:left"></a-sky>
     <a-sky id="skyRight" color="black" stereo="eye:right"></a-sky>
 
+    <!-- Camera -->
     <a-entity id="rig" thumbstick-controlled-motion>
+      <a-entity id="compassObj" position="0.5 0.5 -2" rotation="-45 0 0" visible="false">
+        <a-image src="#compass" width="0.1" height="0.1" scale="5 5 5" thumbstick-controlled-compass>
+          <a-troika-text value="N" align="center" position="0 -0.06 0" color="black"
+            scale="0.1 0.1 0.1"></a-troika-text>
+          <a-troika-text value="E" align="center" position="0.06 0 0" color="black" scale="0.1 0.1 0.1"></a-troika-text>
+          <a-troika-text value="S" align="center" position="0 0.06 0" color="black" scale="0.1 0.1 0.1"></a-troika-text>
+          <a-troika-text value="W" align="center" position="-0.06 0 0" color="black"
+            scale="0.1 0.1 0.1"></a-troika-text>
+        </a-image>
+      </a-entity>
+
       <a-entity camera position="0 2 0" look-controls stereocam="eye:left;">
       </a-entity>
       <a-entity raycaster="objects: .raycastable" laser-controls="hand: right"></a-entity>
