@@ -12,25 +12,25 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const imgPlanesData = [
-        { id: 'img-plane-1', position: '-15 7.5 -25', leftStereo: "#left1", rightStereo: "#right1", tubeModel: "#tube1", text: "Seitah (Pre)" },
-        { id: 'img-plane-2', position: '-5 7.5 -25', leftStereo: "#left2", rightStereo: "#right2", tubeModel: "#tube2", text: "Seitah (Post)" },
-        { id: 'img-plane-3', position: '5 7.5 -25', leftStereo: "#left3", rightStereo: "#right3", tubeModel: "#tube3", text: "Amalik" },
-        { id: 'img-plane-4', position: '15 7.5 -25', leftStereo: "#left4", rightStereo: "#right4", tubeModel: "#tube4", text: "Roubion" },
+        { id: 'img-plane-1', position: '-15 7.5 -25', leftStereo: "#left1", rightStereo: "#right1", tubeModel: "#tube1", text: "Seitah (Pre)", nextImgPlane: '#img-plane-2' },
+        { id: 'img-plane-2', position: '-5 7.5 -25', leftStereo: "#left2", rightStereo: "#right2", tubeModel: "#tube2", text: "Seitah (Post)", nextImgPlane: '#img-plane-3' },
+        { id: 'img-plane-3', position: '5 7.5 -25', leftStereo: "#left3", rightStereo: "#right3", tubeModel: "#tube3", text: "Amalik", nextImgPlane: '#img-plane-4' },
+        { id: 'img-plane-4', position: '15 7.5 -25', leftStereo: "#left4", rightStereo: "#right4", tubeModel: "#tube4", text: "Roubion", nextImgPlane: '#img-plane-5' },
 
-        { id: 'img-plane-5', position: '-15 2.5 -25', leftStereo: "#left5", rightStereo: "#right5", tubeModel: "#tube5", text: "Brac" },
-        { id: 'img-plane-6', position: '-5 2.5 -25', leftStereo: "#left6", rightStereo: "#right6", tubeModel: "#tube6", text: "Rochette" },
-        { id: 'img-plane-7', position: '5 2.5 -25', leftStereo: "#left7", rightStereo: "#right7", tubeModel: "#tube7", text: "Wildcat Ridge" },
-        { id: 'img-plane-8', position: '15 2.5 -25', leftStereo: "#left8", rightStereo: "#right8", tubeModel: "#tube8", text: "Skinner Ridge" },
+        { id: 'img-plane-5', position: '-15 2.5 -25', leftStereo: "#left5", rightStereo: "#right5", tubeModel: "#tube5", text: "Brac", nextImgPlane: '#img-plane-6' },
+        { id: 'img-plane-6', position: '-5 2.5 -25', leftStereo: "#left6", rightStereo: "#right6", tubeModel: "#tube6", text: "Rochette", nextImgPlane: '#img-plane-7' },
+        { id: 'img-plane-7', position: '5 2.5 -25', leftStereo: "#left7", rightStereo: "#right7", tubeModel: "#tube7", text: "Wildcat Ridge", nextImgPlane: '#img-plane-8' },
+        { id: 'img-plane-8', position: '15 2.5 -25', leftStereo: "#left8", rightStereo: "#right8", tubeModel: "#tube8", text: "Skinner Ridge", nextImgPlane: '#img-plane-9' },
 
-        { id: 'img-plane-9', position: '-15 -2.5 -25', leftStereo: "#left9", rightStereo: "#right9", tubeModel: "#tube9", text: "Sid (Pre)" },
-        { id: 'img-plane-10', position: '-5 -2.5 -25', leftStereo: "#left10", rightStereo: "#right10", tubeModel: "#tube10", text: "Hidden Harbor" },
-        { id: 'img-plane-11', position: '5 -2.5 -25', leftStereo: "#left11", rightStereo: "#right11", tubeModel: "#tube11", text: "Three Forks 1" },
-        { id: 'img-plane-12', position: '15 -2.5 -25', leftStereo: "#left12", rightStereo: "#right12", tubeModel: "#tube12", text: "Three Forks 2" },
+        { id: 'img-plane-9', position: '-15 -2.5 -25', leftStereo: "#left9", rightStereo: "#right9", tubeModel: "#tube9", text: "Sid (Pre)", nextImgPlane: '#img-plane-10' },
+        { id: 'img-plane-10', position: '-5 -2.5 -25', leftStereo: "#left10", rightStereo: "#right10", tubeModel: "#tube10", text: "Hidden Harbor", nextImgPlane: '#img-plane-11' },
+        { id: 'img-plane-11', position: '5 -2.5 -25', leftStereo: "#left11", rightStereo: "#right11", tubeModel: "#tube11", text: "Three Forks 1", nextImgPlane: '#img-plane-12' },
+        { id: 'img-plane-12', position: '15 -2.5 -25', leftStereo: "#left12", rightStereo: "#right12", tubeModel: "#tube12", text: "Three Forks 2", nextImgPlane: '#img-plane-13' },
 
-        { id: 'img-plane-13', position: '-15 -7.5 -25', leftStereo: "#left13", rightStereo: "#right13", tubeModel: "#tube13", text: "Belva Crater" },
-        { id: 'img-plane-14', position: '-5 -7.5 -25', leftStereo: "#left14", rightStereo: "#right14", tubeModel: "#tube14", text: "Bessieres Island" },
-        { id: 'img-plane-15', position: '5 -7.5 -25', leftStereo: "#left15", rightStereo: "#right15", tubeModel: "#tube15", text: "Bunsen Peak" },
-        { id: 'img-plane-16', position: '15 -7.5 -25', leftStereo: "#left16", rightStereo: "#right16", tubeModel: "#tube16", text: "Hidden Mountain" }
+        { id: 'img-plane-13', position: '-15 -7.5 -25', leftStereo: "#left13", rightStereo: "#right13", tubeModel: "#tube13", text: "Belva Crater", nextImgPlane: '#img-plane-14' },
+        { id: 'img-plane-14', position: '-5 -7.5 -25', leftStereo: "#left14", rightStereo: "#right14", tubeModel: "#tube14", text: "Bessieres Island", nextImgPlane: '#img-plane-15' },
+        { id: 'img-plane-15', position: '5 -7.5 -25', leftStereo: "#left15", rightStereo: "#right15", tubeModel: "#tube15", text: "Bunsen Peak", nextImgPlane: '#img-plane-16' },
+        { id: 'img-plane-16', position: '15 -7.5 -25', leftStereo: "#left16", rightStereo: "#right16", tubeModel: "#tube16", text: "Hidden Mountain", nextImgPlane: '#img-plane-1' }
 
       ];
 
@@ -42,11 +42,14 @@
         const imgPlaneEl = document.createElement('a-entity');
         imgPlaneEl.setAttribute('id', data.id);
         imgPlaneEl.setAttribute('position', data.position);
-        imgPlaneEl.setAttribute('pane-hover', `leftStereo: ${data.leftStereo}; rightStereo: ${data.rightStereo}`);
+        imgPlaneEl.setAttribute('sample-loc', true);
+        imgPlaneEl.setAttribute('leftstereo', data.leftStereo);
+        imgPlaneEl.setAttribute('rightstereo', data.rightStereo);
+        imgPlaneEl.setAttribute('nextimgplane', data.nextImgPlane);
 
         // overlapping box
         const boxEl = document.createElement('a-box');
-        boxEl.setAttribute('position', '0 1 0');
+        boxEl.setAttribute('position', '0 0 0');
         boxEl.setAttribute('width', '3');
         boxEl.setAttribute('height', '5');
         boxEl.setAttribute('material', 'transparent: true; opacity: 0');
@@ -60,8 +63,9 @@
 
         // text element
         const textEl = document.createElement('a-troika-text');
-        textEl.setAttribute('align', 'center');
-        textEl.setAttribute('position', '0 -1 1');
+        // textEl.setAttribute('align', 'center');
+        textEl.setAttribute('anchor', 'center');
+        textEl.setAttribute('position', '0 -1 0');
         textEl.setAttribute('fontsize', '10');
         textEl.setAttribute('scale', '4 4 4');
         textEl.setAttribute('value', data.text);
@@ -72,8 +76,6 @@
         imgPlaneEl.appendChild(boxEl);
         sceneEl.appendChild(imgPlaneEl);
 
-        // hide compass
-
       });
     });
   </script>
@@ -82,7 +84,7 @@
 
 <body>
 
-  <a-scene cursor="rayOrigin: mouse" return-to-main view-compass>
+  <a-scene cursor="rayOrigin: mouse" return-to-main toggle-bg>
     <!-- Assets -->
     <a-assets>
       <!-- <img id="tube1" src="assets/sample_tube/tube1.png" /> -->
@@ -168,23 +170,39 @@
     <a-sky id="skyLeft" color="black" stereo="eye:left"></a-sky>
     <a-sky id="skyRight" color="black" stereo="eye:right"></a-sky>
 
+    <!-- Compass Directions -->
+    <a-troika-text id="comp-dir-N" value="S" align="center" position="0 4 5" rotation="0 180 0" color="black"
+      scale="3 3 3" visible="false"></a-troika-text>
+    <a-troika-text id="comp-dir-W" value="E" align="center" position="-5 4 0" rotation="0 90 0" color="black"
+      scale="3 3 3" visible="false"></a-troika-text>
+    <a-troika-text id="comp-dir-S" value="N" align="center" position="0 4 -5" rotation="0 0 0" color="black"
+      scale="3 3 3" visible="false"></a-troika-text>
+    <a-troika-text id="comp-dir-E" value="W" align="center" position="5 4 0" rotation="0 -90 0" color="black"
+      scale="3 3 3" visbile="false"></a-troika-text>
+
+
+    <a-entity id="compassObj" position="0 0 0" rotation="-90 0 0" visible="false">
+      <a-image src="#compass" width="0.1" height="0.1" scale="10 10 10" thumbstick-controlled-compass>
+        <a-troika-text value="S" align="center" position="0 -0.06 0" color="blue" scale="0.1 0.1 0.1"></a-troika-text>
+        <a-troika-text value="W" align="center" position="0.06 0 0" color="blue" scale="0.1 0.1 0.1"></a-troika-text>
+        <a-troika-text value="N" align="center" position="0 0.06 0" color="blue" scale="0.1 0.1 0.1"></a-troika-text>
+        <a-troika-text value="E" align="center" position="-0.06 0 0" color="blue" scale="0.1 0.1 0.1"></a-troika-text>
+      </a-image>
+    </a-entity>
+
+    <!-- Lighting -->
+    <a-light type="ambient" color="#FFF" intensity="0.5"></a-light>
+    <a-light type="directional" color="#FDFD96" intensity="10" position="-1 1 0"></a-light>
+
+
     <!-- Camera -->
     <a-entity id="rig" thumbstick-controlled-motion>
-      <a-entity id="compassObj" position="0.5 0.5 -2" rotation="-45 0 0" visible="false">
-        <a-image src="#compass" width="0.1" height="0.1" scale="5 5 5" thumbstick-controlled-compass>
-          <a-troika-text value="N" align="center" position="0 -0.06 0" color="black"
-            scale="0.1 0.1 0.1"></a-troika-text>
-          <a-troika-text value="E" align="center" position="0.06 0 0" color="black" scale="0.1 0.1 0.1"></a-troika-text>
-          <a-troika-text value="S" align="center" position="0 0.06 0" color="black" scale="0.1 0.1 0.1"></a-troika-text>
-          <a-troika-text value="W" align="center" position="-0.06 0 0" color="black"
-            scale="0.1 0.1 0.1"></a-troika-text>
-        </a-image>
-      </a-entity>
-
       <a-entity camera position="0 2 0" look-controls stereocam="eye:left;">
       </a-entity>
-      <a-entity raycaster="objects: .raycastable" laser-controls="hand: right"></a-entity>
+      <a-entity oculus-touch-controls="hand: left" thumbstick-rot-logging></a-entity>
       <a-entity oculus-touch-controls="hand: right" thumbstick-rot-logging></a-entity>
+      <a-entity raycaster="objects: .raycastable" laser-controls="hand: left"></a-entity>
+      <a-entity raycaster="objects: .raycastable" laser-controls="hand: right"></a-entity>
     </a-entity>
 
 

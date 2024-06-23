@@ -14,3 +14,8 @@ To duplicate the what is seen on the ocuclus and to inspect the browser, open a 
 ## Inspecting 3D models
 
 For developers and designers who want to inpsect their 3D models before placing into the scene, here is a cool AFrame site developed by Don Mccurdy go to this [site](https://gltf-viewer.donmccurdy.com/), or if you prefer to host it locally, here is the [repo](https://github.com/donmccurdy/three-gltf-viewer).
+
+## TODO
+
+1. Fix the letters in the sky. Standing and sitting should not change the height of the letters and the position of the letters need to change given the azimuth of the image.
+2. Small models of Jazero crater/three forks at the landing page. Want to be able to highlight where the sample is at the depot when hovering over the tube. 

@@ -1,6 +1,6 @@
 var follow_delay = 0.9;
 var translation_speed = 0.1;
-var rotation_speed = 0.005;
+var rotation_speed = 0.01;
 var deltaPForward = 0.0;
 var deltaPRight = 0.0;
 var deltaElevation = 0;
@@ -38,23 +38,10 @@ AFRAME.registerComponent('thumbstick-rot-logging', {
   }
 });
 
-// logging of thumbstick input for zoom
-AFRAME.registerComponent('thumbstick-zoom-logging', {
-  init: function () {
-    this.logThumbstick = function (evt) { zoom = zoom + evt.detail.y * 0.1; }
-    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
-  },
-
-  remove: function () {
-    this.el.removeEventListener('thumbstickmoved', this.logThumbstick);
-  }
-});
-
 // how to move the camera given thumbstick input
 AFRAME.registerComponent('thumbstick-controlled-motion', {
   tick: function () {
     let el = this.el;
-    let compass = el.querySelector('#compass');
 
     let pos = el.getAttribute('position');
     let r = el.getAttribute('rotation');
@@ -66,7 +53,6 @@ AFRAME.registerComponent('thumbstick-controlled-motion', {
     el.setAttribute('position', { x: newX, y: pos.y, z: newZ })
 
     // update the camera rotation
-    // let newPitch = Math.max(Math.min(r.x - deltaElevation * rotation_speed, 90), -90);
     let newYaw = r.y - deltaAzimuth * rotation_speed;
     el.setAttribute('rotation', { x: r.x, y: newYaw, z: r.z })
   }
@@ -75,61 +61,16 @@ AFRAME.registerComponent('thumbstick-controlled-motion', {
 AFRAME.registerComponent('thumbstick-controlled-compass', {
   tick: function () {
     let compass = this.el;
-    let r = compass.getAttribute('rotation');
+    let rig = this.el.sceneEl.querySelector('#rig');
+    let rigRot = rig.getAttribute('rotation');
 
-    let newRoll = r.z + deltaAzimuth * rotation_speed;
-    compass.setAttribute('rotation', { x: r.x, y: r.y, z: newRoll })
 
-    // for each child of the compass, rotate it back to the original orientation
     let children = compass.children;
     for (let i = 0; i < children.length; i++) {
       let child = children[i];
       let cr = child.getAttribute('rotation');
-      let newCRoll = cr.z - deltaAzimuth * rotation_speed;
-      child.setAttribute('rotation', { x: cr.x, y: cr.y, z: newCRoll })
+      // let newCRoll = cr.z - deltaAzimuth * rotation_speed;
+      child.setAttribute('rotation', { x: cr.x, y: cr.y, z: rigRot.y })
     }
-  }
-});
-
-
-// Determines how ROVER follows the camera 
-AFRAME.registerComponent('camera-follower', {
-  tick: function () {
-    let rig = document.querySelector('#rig');
-    let rigPos = rig.getAttribute('position');
-
-    let pos = this.el.getAttribute('position');
-
-    // animate the element to move to the camera position
-    let targetX = rigPos.x;
-    let targetZ = rigPos.z;
-
-    let diffX = targetX - pos.x;
-    let diffZ = targetZ - pos.z;
-
-    this.el.setAttribute('position', {
-      x: pos.x + diffX * (1 - follow_delay),
-      y: pos.y,
-      z: pos.z + diffZ * (1 - follow_delay)
-    })
-  }
-});
-
-AFRAME.registerComponent('click-scale', {
-  init: function () {
-
-    this.clickScale = function (evt) {
-      let scale = this.getAttribute('scale');
-      let newScale = scale.x * 1.1;
-      this.setAttribute('scale', {
-        x: newScale,
-        y: newScale,
-        z: newScale
-      })
-    }
-    this.el.addEventListener('click', this.clickScale);
-  },
-  remove: function () {
-    this.el.removeEventListener('click', this.clickScale);
   }
 });
