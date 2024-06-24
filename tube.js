@@ -1,6 +1,32 @@
-var bgColor = "black";
+var rotation_speed = 0.01;
+var deltaAzimuth = 0;
 var onSite = false;
 var nextImgPlane = "";
+
+// logging of thumbstick input for rotations
+AFRAME.registerComponent('thumbstick-rot-logging', {
+  init: function () {
+
+    this.logThumbstick = (evt) => { deltaAzimuth = evt.detail.x * 90; }
+    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+  },
+
+  remove: function () {
+    this.el.removeEventListener('thumbstickmoved', this.logThumbstick);
+  }
+});
+
+// how to move the camera given thumbstick input
+AFRAME.registerComponent('thumbstick-controlled-motion', {
+  tick: function () {
+    let el = this.el;
+
+    // update the camera rotation
+    let r = el.getAttribute('rotation');
+    let newYaw = r.y - deltaAzimuth * rotation_speed;
+    el.setAttribute('rotation', { x: r.x, y: newYaw, z: r.z })
+  }
+});
 
 // Debounce function
 function debounce(func, wait) {
@@ -15,7 +41,62 @@ function debounce(func, wait) {
   };
 }
 
-AFRAME.registerComponent('sample-loc', {
+// logic for entering a site
+function enterSite(currSampleEl) {
+
+  // change sky to stereo images
+  let skyLeft = currSampleEl.sceneEl.querySelector('#skyLeft')
+  let skyRight = currSampleEl.sceneEl.querySelector('#skyRight')
+  skyLeft.setAttribute("color", "")
+  skyRight.setAttribute("color", "")
+  skyLeft.setAttribute("src", currSampleEl.getAttribute('leftstereo'))
+  skyRight.setAttribute("src", currSampleEl.getAttribute('rightstereo'))
+
+  // hide all other sample tubes
+  let allTubes = currSampleEl.sceneEl.querySelectorAll('[id^="sample-tube"]')
+  allTubes.forEach(element => {
+    if (element !== currSampleEl) { element.setAttribute('visible', 'false') }
+  })
+  currSampleEl.setAttribute('visible', 'true')
+
+  // show all comp-dir elements
+  let allComps = currSampleEl.sceneEl.querySelectorAll('[id^="comp-dir"]')
+  allComps.forEach(element => { element.setAttribute('visible', 'true') })
+
+  // rotate camera to initial yaw
+  // note: +ve yaw rotates counter-clockwise and -ve yaw rotates clockwise
+  let camera = currSampleEl.sceneEl.querySelector('#rig')
+  let initialYaw = currSampleEl.getAttribute('initYaw')
+  camera.setAttribute('rotation', { x: 0, y: initialYaw, z: 0 })
+
+}
+
+// logic for returning to landing site
+function reenterLanding(sceneEl) {
+  // reset sky to black
+  let skyLeft = sceneEl.querySelector('#skyLeft')
+  let skyRight = sceneEl.querySelector('#skyRight')
+  skyLeft.setAttribute("color", "black")
+  skyRight.setAttribute("color", "black")
+
+  // show all sample tubes
+  let allTubes = sceneEl.querySelectorAll('[id^="sample-tube"]')
+  allTubes.forEach(element => { element.setAttribute('visible', 'true') })
+
+  // hide all comp-dir elements
+  let allComps = sceneEl.querySelectorAll('[id^="comp-dir"]')
+  allComps.forEach(element => { element.setAttribute('visible', 'false') })
+
+  // point camera back to the center
+  let camera = sceneEl.querySelector('#rig')
+  camera.setAttribute('rotation', { x: 0, y: 0, z: 0 })
+
+}
+
+
+
+// functionality for clicks on sample tubes
+AFRAME.registerComponent('sample-nav', {
   init: function () {
     let el = this.el;
     // enlarge when hovered over
@@ -29,46 +110,14 @@ AFRAME.registerComponent('sample-loc', {
 
       if (this.el.getAttribute('visible')) {
         if (!onSite) {
-          let skyLeft = el.sceneEl.querySelector('#skyLeft')
-          let skyRight = el.sceneEl.querySelector('#skyRight')
-          let leftstereo = el.getAttribute('leftstereo')
-          let rightstereo = el.getAttribute('rightstereo')
-
-          // change sky to stereo images 
-          skyLeft.setAttribute("color", "")
-          skyRight.setAttribute("color", "")
-          skyLeft.setAttribute("src", leftstereo)
-          skyRight.setAttribute("src", rightstereo)
-
-          // hide all other image plane elements
-          let allElements = el.sceneEl.querySelectorAll('[id^="img-plane"]')
-          allElements.forEach(element => {
-            if (element !== el) { element.setAttribute('visible', 'false') }
-          })
-
-          // show all comp-dir elements
-          let allComps = el.sceneEl.querySelectorAll('[id^="comp-dir"]')
-          allComps.forEach(element => { element.setAttribute('visible', 'true') })
+          enterSite(el)
 
           // update states
           onSite = true;
           nextImgPlane = el.getAttribute('nextimgplane');
 
         } else {
-          let skyLeft = el.sceneEl.querySelector('#skyLeft')
-          let skyRight = el.sceneEl.querySelector('#skyRight')
-
-          // show all sample tubes
-          let allElements = el.sceneEl.querySelectorAll('[id^="img-plane"]')
-          allElements.forEach(element => { element.setAttribute('visible', 'true') })
-
-          // reset the background to black
-          skyLeft.setAttribute("color", "black")
-          skyRight.setAttribute("color", "black")
-
-          // hide all comp-dir elements
-          let allComps = el.sceneEl.querySelectorAll('[id^="comp-dir"]')
-          allComps.forEach(element => { element.setAttribute('visible', 'false') })
+          reenterLanding(el.sceneEl)
 
           // update states
           onSite = false;
@@ -88,135 +137,46 @@ AFRAME.registerComponent('sample-loc', {
   }
 });
 
-// to toggle the background to next image plane
-AFRAME.registerComponent('toggle-bg', {
+
+AFRAME.registerComponent('button-nav', {
   sceneOnly: true,
   init: function () {
     let el = this.el;
 
-    this.toggleBackground = (evt) => {
-      console.log("Toggling background...")
-      if (onSite) {
-        let skyLeft = el.sceneEl.querySelector('#skyLeft')
-        let skyRight = el.sceneEl.querySelector('#skyRight')
-
-        let nextImgPlaneEl = el.sceneEl.querySelector(nextImgPlane)
-        let nextLeftStereo = nextImgPlaneEl.getAttribute('leftstereo')
-        let nextRightStereo = nextImgPlaneEl.getAttribute('rightstereo')
-
-        // change sky to stereo images 
-        // reset the background to black
-        skyLeft.setAttribute("src", nextLeftStereo)
-        skyRight.setAttribute("src", nextRightStereo)
-
-
-        // make tube visible
-        nextImgPlaneEl.setAttribute('visible', 'true')
-
-        // hide all other image plane elements
-        let allElements = el.sceneEl.querySelectorAll('[id^="img-plane"]')
-        allElements.forEach(element => {
-          if (element !== nextImgPlaneEl) { element.setAttribute('visible', 'false') }
-        })
-
-        // update nextImgPlane
-        nextImgPlane = nextImgPlaneEl.getAttribute('nextimgplane')
-      }
-    }
-
-    this.debouncedToggleBackground = debounce(this.toggleBackground.bind(this), 250);
-
-    el.addEventListener('abuttondown', this.debouncedToggleBackground)
-    el.addEventListener('xbuttondown', this.debouncedToggleBackground)
-  },
-  remove: function () {
-    this.el.removeEventListener('abuttondown', this.debouncedToggleBackground)
-    el.addEventListener('abuttondown', this.debouncedToggleBackground)
-  }
-
-})
-
-
-
-AFRAME.registerComponent('return-to-main', {
-  sceneOnly: true,
-  init: function () {
-    let el = this.el;
     this.returnToMain = (evt) => {
-      console.log("Returning to main...")
-
-      let skyLeft = el.querySelector('#skyLeft')
-      let skyRight = el.querySelector('#skyRight')
-      let allElements = el.querySelectorAll('[id^="img-plane"]')
-
-      // show all sample tubes
-      allElements.forEach(element => { element.setAttribute('visible', 'true') })
-
-      // point camera back to the center
-      let camera = el.querySelector('#rig')
-      camera.setAttribute('rotation', { x: 0, y: 0, z: 0 })
-
-      // hide all comp-dir elements
-      let allComps = el.querySelectorAll('[id^="comp-dir"]')
-      allComps.forEach(element => { element.setAttribute('visible', 'false') })
-
-      // reset the background to black
-      skyLeft.setAttribute("color", "black")
-      skyRight.setAttribute("color", "black")
-
-
-      console.log("skyleft src: ", skyLeft.getAttribute("src"))
-      console.log("skyright src: ", skyRight.getAttribute("src"))
-      console.log("skyleft color: ", skyLeft.getAttribute("color"))
-      console.log("skyright color: ", skyRight.getAttribute("color"))
-
+      reenterLanding(el)
 
       // update onSite state
       onSite = false;
+    }
 
+    // switch to next image plane
+    this.nextStereo = (evt) => {
+      if (onSite) {
+        let newSampleEl = el.sceneEl.querySelector(nextImgPlane)
+
+        // enter next stereo site
+        enterSite(newSampleEl)
+
+        // update states
+        nextImgPlane = newSampleEl.getAttribute('nextimgplane');
+
+      }
     }
 
     this.debouncedReturnToMain = debounce(this.returnToMain.bind(this), 250);
+    this.debouncednextStereo = debounce(this.nextStereo.bind(this), 250);
 
     el.addEventListener('bbuttondown', this.debouncedReturnToMain)
     el.addEventListener('ybuttondown', this.debouncedReturnToMain)
+    el.addEventListener('abuttondown', this.debouncednextStereo)
+    el.addEventListener('xbuttondown', this.debouncednextStereo)
   },
   remove: function () {
     this.el.removeEventListener('bbuttondown', this.debouncedReturnToMain)
     this.el.removeEventListener('ybuttondown', this.debouncedReturnToMain)
+    this.el.removeEventListener('abuttondown', this.debouncednextStereo)
+    this.el.removeEventListener('xbuttondown', this.debouncednextStereo)
   }
 })
 
-// AFRAME.registerComponent('view-compass', {
-//   sceneOnly: true,
-//   init: function () {
-//     let comp = this.el.querySelector('#compassObj')
-
-//     // function to toggle the visibility of the compass
-//     this.changeViz = (evt) => {
-//       clearTimeout(debounceTimer);
-//       debounceTimer = setTimeout(() => {
-//         if (onSite && !compVisible) {
-//           comp.setAttribute('visible', "true");
-//           compVisible = true;
-//         } else {
-//           comp.setAttribute('visible', "false");
-//           compVisible = false;
-//         }
-//       }, debounceDelay);
-//     }
-
-//     // function to hide the compass
-//     this.hideCompass = (evt) => {
-//       comp.setAttribute('visible', "false")
-//       compVisible = false;
-//     }
-
-//     this.el.addEventListener('bbuttondown', this.changeViz)
-//     this.el.addEventListener('abuttondown', this.hideCompass)
-//   },
-//   remove: function () {
-//     this.el.removeEventListener('bbuttondown', this.changeViz)
-//     this.el.removeEventListener('abuttondown', this.hideCompass)
-//   }
-// })

@@ -12,37 +12,38 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const imgPlanesData = [
-        { id: 'img-plane-1', position: '-15 7.5 -25', leftStereo: "#left1", rightStereo: "#right1", tubeModel: "#tube1", text: "Seitah (Pre)", nextImgPlane: '#img-plane-2' },
-        { id: 'img-plane-2', position: '-5 7.5 -25', leftStereo: "#left2", rightStereo: "#right2", tubeModel: "#tube2", text: "Seitah (Post)", nextImgPlane: '#img-plane-3' },
-        { id: 'img-plane-3', position: '5 7.5 -25', leftStereo: "#left3", rightStereo: "#right3", tubeModel: "#tube3", text: "Amalik", nextImgPlane: '#img-plane-4' },
-        { id: 'img-plane-4', position: '15 7.5 -25', leftStereo: "#left4", rightStereo: "#right4", tubeModel: "#tube4", text: "Roubion", nextImgPlane: '#img-plane-5' },
+        { id: 'sample-tube-1', position: '-15 7.5 -25', leftStereo: "#left1", rightStereo: "#right1", initYaw: "0", tubeModel: "#tube1", text: "Seitah (Pre)", nextImgPlane: '#sample-tube-2' },
+        { id: 'sample-tube-2', position: '-5 7.5 -25', leftStereo: "#left2", rightStereo: "#right2", initYaw: "45", tubeModel: "#tube2", text: "Seitah (Post)", nextImgPlane: '#sample-tube-3' },
+        { id: 'sample-tube-3', position: '5 7.5 -25', leftStereo: "#left3", rightStereo: "#right3", initYaw: "-45", tubeModel: "#tube3", text: "Amalik", nextImgPlane: '#sample-tube-4' },
+        { id: 'sample-tube-4', position: '15 7.5 -25', leftStereo: "#left4", rightStereo: "#right4", initYaw: "45", tubeModel: "#tube4", text: "Roubion", nextImgPlane: '#sample-tube-5' },
 
-        { id: 'img-plane-5', position: '-15 2.5 -25', leftStereo: "#left5", rightStereo: "#right5", tubeModel: "#tube5", text: "Brac", nextImgPlane: '#img-plane-6' },
-        { id: 'img-plane-6', position: '-5 2.5 -25', leftStereo: "#left6", rightStereo: "#right6", tubeModel: "#tube6", text: "Rochette", nextImgPlane: '#img-plane-7' },
-        { id: 'img-plane-7', position: '5 2.5 -25', leftStereo: "#left7", rightStereo: "#right7", tubeModel: "#tube7", text: "Wildcat Ridge", nextImgPlane: '#img-plane-8' },
-        { id: 'img-plane-8', position: '15 2.5 -25', leftStereo: "#left8", rightStereo: "#right8", tubeModel: "#tube8", text: "Skinner Ridge", nextImgPlane: '#img-plane-9' },
+        { id: 'sample-tube-5', position: '-15 2.5 -25', leftStereo: "#left5", rightStereo: "#right5", initYaw: "45", tubeModel: "#tube5", text: "Brac", nextImgPlane: '#sample-tube-6' },
+        { id: 'sample-tube-6', position: '-5 2.5 -25', leftStereo: "#left6", rightStereo: "#right6", initYaw: "45", tubeModel: "#tube6", text: "Rochette", nextImgPlane: '#sample-tube-7' },
+        { id: 'sample-tube-7', position: '5 2.5 -25', leftStereo: "#left7", rightStereo: "#right7", initYaw: "45", tubeModel: "#tube7", text: "Wildcat Ridge", nextImgPlane: '#sample-tube-8' },
+        { id: 'sample-tube-8', position: '15 2.5 -25', leftStereo: "#left8", rightStereo: "#right8", initYaw: "45", tubeModel: "#tube8", text: "Skinner Ridge", nextImgPlane: '#sample-tube-9' },
 
-        { id: 'img-plane-9', position: '-15 -2.5 -25', leftStereo: "#left9", rightStereo: "#right9", tubeModel: "#tube9", text: "Sid (Pre)", nextImgPlane: '#img-plane-10' },
-        { id: 'img-plane-10', position: '-5 -2.5 -25', leftStereo: "#left10", rightStereo: "#right10", tubeModel: "#tube10", text: "Hidden Harbor", nextImgPlane: '#img-plane-11' },
-        { id: 'img-plane-11', position: '5 -2.5 -25', leftStereo: "#left11", rightStereo: "#right11", tubeModel: "#tube11", text: "Three Forks 1", nextImgPlane: '#img-plane-12' },
-        { id: 'img-plane-12', position: '15 -2.5 -25', leftStereo: "#left12", rightStereo: "#right12", tubeModel: "#tube12", text: "Three Forks 2", nextImgPlane: '#img-plane-13' },
+        { id: 'sample-tube-9', position: '-15 -2.5 -25', leftStereo: "#left9", rightStereo: "#right9", initYaw: "45", tubeModel: "#tube9", text: "Sid (Pre)", nextImgPlane: '#sample-tube-10' },
+        { id: 'sample-tube-10', position: '-5 -2.5 -25', leftStereo: "#left10", rightStereo: "#right10", initYaw: "45", tubeModel: "#tube10", text: "Hidden Harbor", nextImgPlane: '#sample-tube-11' },
+        { id: 'sample-tube-11', position: '5 -2.5 -25', leftStereo: "#left11", rightStereo: "#right11", initYaw: "45", tubeModel: "#tube11", text: "Three Forks 1", nextImgPlane: '#sample-tube-12' },
+        { id: 'sample-tube-12', position: '15 -2.5 -25', leftStereo: "#left12", rightStereo: "#right12", initYaw: "45", tubeModel: "#tube12", text: "Three Forks 2", nextImgPlane: '#sample-tube-13' },
 
-        { id: 'img-plane-13', position: '-15 -7.5 -25', leftStereo: "#left13", rightStereo: "#right13", tubeModel: "#tube13", text: "Belva Crater", nextImgPlane: '#img-plane-14' },
-        { id: 'img-plane-14', position: '-5 -7.5 -25', leftStereo: "#left14", rightStereo: "#right14", tubeModel: "#tube14", text: "Bessieres Island", nextImgPlane: '#img-plane-15' },
-        { id: 'img-plane-15', position: '5 -7.5 -25', leftStereo: "#left15", rightStereo: "#right15", tubeModel: "#tube15", text: "Bunsen Peak", nextImgPlane: '#img-plane-16' },
-        { id: 'img-plane-16', position: '15 -7.5 -25', leftStereo: "#left16", rightStereo: "#right16", tubeModel: "#tube16", text: "Hidden Mountain", nextImgPlane: '#img-plane-1' }
+        { id: 'sample-tube-13', position: '-15 -7.5 -25', leftStereo: "#left13", rightStereo: "#right13", initYaw: "45", tubeModel: "#tube13", text: "Belva Crater", nextImgPlane: '#sample-tube-14' },
+        { id: 'sample-tube-14', position: '-5 -7.5 -25', leftStereo: "#left14", rightStereo: "#right14", initYaw: "45", tubeModel: "#tube14", text: "Bessieres Island", nextImgPlane: '#sample-tube-15' },
+        { id: 'sample-tube-15', position: '5 -7.5 -25', leftStereo: "#left15", rightStereo: "#right15", initYaw: "45", tubeModel: "#tube15", text: "Bunsen Peak", nextImgPlane: '#sample-tube-16' },
+        { id: 'sample-tube-16', position: '15 -7.5 -25', leftStereo: "#left16", rightStereo: "#right16", initYaw: "45", tubeModel: "#tube16", text: "Hidden Mountain", nextImgPlane: '#sample-tube-1' }
 
       ];
 
       // parent entity
       const sceneEl = document.querySelector('a-scene');
 
-      // append img-planes to the scene
+      // append sample-tubes to the scene
       imgPlanesData.forEach(data => {
         const imgPlaneEl = document.createElement('a-entity');
         imgPlaneEl.setAttribute('id', data.id);
         imgPlaneEl.setAttribute('position', data.position);
-        imgPlaneEl.setAttribute('sample-loc', true);
+        imgPlaneEl.setAttribute('sample-nav', true);
+        imgPlaneEl.setAttribute('initYaw', data.initYaw);
         imgPlaneEl.setAttribute('leftstereo', data.leftStereo);
         imgPlaneEl.setAttribute('rightstereo', data.rightStereo);
         imgPlaneEl.setAttribute('nextimgplane', data.nextImgPlane);
@@ -84,7 +85,7 @@
 
 <body>
 
-  <a-scene cursor="rayOrigin: mouse" return-to-main toggle-bg>
+  <a-scene cursor="rayOrigin: mouse" button-nav>
     <!-- Assets -->
     <a-assets>
       <!-- <img id="tube1" src="assets/sample_tube/tube1.png" /> -->
@@ -165,6 +166,15 @@
 
     </a-assets>
 
+    <!-- Camera -->
+    <a-entity id="rig" thumbstick-controlled-motion>
+      <a-entity camera position="0 2 0" look-controls stereocam="eye:left;">
+      </a-entity>
+      <a-entity oculus-touch-controls="hand: left" thumbstick-rot-logging></a-entity>
+      <a-entity oculus-touch-controls="hand: right" thumbstick-rot-logging></a-entity>
+      <a-entity raycaster="objects: .raycastable" laser-controls="hand: left"></a-entity>
+      <a-entity raycaster="objects: .raycastable" laser-controls="hand: right"></a-entity>
+    </a-entity>
 
     <!-- Sky map -->
     <a-sky id="skyLeft" color="black" stereo="eye:left"></a-sky>
@@ -181,30 +191,9 @@
       scale="3 3 3" visbile="false"></a-troika-text>
 
 
-    <a-entity id="compassObj" position="0 0 0" rotation="-90 0 0" visible="false">
-      <a-image src="#compass" width="0.1" height="0.1" scale="10 10 10" thumbstick-controlled-compass>
-        <a-troika-text value="S" align="center" position="0 -0.06 0" color="blue" scale="0.1 0.1 0.1"></a-troika-text>
-        <a-troika-text value="W" align="center" position="0.06 0 0" color="blue" scale="0.1 0.1 0.1"></a-troika-text>
-        <a-troika-text value="N" align="center" position="0 0.06 0" color="blue" scale="0.1 0.1 0.1"></a-troika-text>
-        <a-troika-text value="E" align="center" position="-0.06 0 0" color="blue" scale="0.1 0.1 0.1"></a-troika-text>
-      </a-image>
-    </a-entity>
-
     <!-- Lighting -->
     <a-light type="ambient" color="#FFF" intensity="0.5"></a-light>
     <a-light type="directional" color="#FDFD96" intensity="10" position="-1 1 0"></a-light>
-
-
-    <!-- Camera -->
-    <a-entity id="rig" thumbstick-controlled-motion>
-      <a-entity camera position="0 2 0" look-controls stereocam="eye:left;">
-      </a-entity>
-      <a-entity oculus-touch-controls="hand: left" thumbstick-rot-logging></a-entity>
-      <a-entity oculus-touch-controls="hand: right" thumbstick-rot-logging></a-entity>
-      <a-entity raycaster="objects: .raycastable" laser-controls="hand: left"></a-entity>
-      <a-entity raycaster="objects: .raycastable" laser-controls="hand: right"></a-entity>
-    </a-entity>
-
 
   </a-scene>
 </body>
