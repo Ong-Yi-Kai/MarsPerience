@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Stereo Tour</title>
+  <script src="js/aframe-v1.6.0.min.js"></script>
+  <script src="js/aframe-stereo-component.min.js"></script>
+  <script src="js/aframe-troika-text.min.js"></script>
+  <script src="stereo_tour.js"></script>
+
+</head>
+
+<body>
+  <a-scene button-nav>
+
+    <a-assets>
+
+
+    </a-assets>
+
+    <!-- Camera -->
+    <a-entity id="rig" thumbstick-controlled-motion rotation="0 180 0">
+      <a-entity camera position="0 2 0" look-controls stereocam="eye:left;">
+      </a-entity>
+      <a-entity oculus-touch-controls="hand: left" thumbstick-rot-logging></a-entity>
+      <a-entity oculus-touch-controls="hand: right" thumbstick-rot-logging></a-entity>
+    </a-entity>
+
+    <!-- Sky Map -->
+    <a-sky id="stereo-left" src="#stereo-0-left" stereo="eye:left"></a-sky>
+    <a-sky id="stereo-right" src="#stereo-0-right" stereo="eye:right"></a-sky>
+
+    <!-- Site Name -->
+    <a-entity id="site-name-cont" rotation="0 180 0">
+      <a-troika-text id="site-name" value="" align="center" position="0 3.5 -4" rotation="0 0 0" color="black"
+        fillOpacity=0 scale="2 2 2"></a-troika-text>
+    </a-entity>
+
+    <!-- Compass -->
+    <a-entity id="compass">
+
+      <a-troika-text id="comp-dir-N" value="S" align="center" position="0 4.5 -5" rotation="0 0 0" color="black"
+        scale="3 3 3"></a-troika-text>
+
+      <a-troika-text id="comp-dir-E" value="E" align="center" position="-5 4.5 0" rotation="0 90 0" color="black"
+        scale="3 3 3"></a-troika-text>
+
+      <a-troika-text id="comp-dir-S" value="N" align="center" position="0 4.5 5" rotation="0 180 0" color="black"
+        scale="3 3 3"></a-troika-text>
+
+      <a-troika-text id="comp-dir-W" value="W" align="center" position="5 4.5 0" rotation="0 -90 0" color="black"
+        scale="3 3 3"></a-troika-text>
+    </a-entity>
+
+
+    </a-s

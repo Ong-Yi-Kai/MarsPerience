@@ -1,0 +1,17 @@
+Site name,Sample name,TFSD #,Left,Right,Horizon,id
+Seitah_south_presampling,,,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Seitah_2_Sols288-312_L0_enhanced_2x.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Seitah_2_Sols288-312_R0_enhanced_2x.jpg,1100,1
+Seitah_south_post_sampling,,1,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Seitah_3_Sol320_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Seitah_3_Sol320_R0_enhanced.jpg,550,2
+Amalik_Enchanged_Lake,,2,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Enchanted_Lake_Sols566-586_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Enchanted_Lake_Sols566-586_R0_enhanced.jpg,1300,3
+Roubion,,4,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Horizon_4_Sol156_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Horizon_4_Sol156_R0_enhanced.jpg,1200,4
+Brac,,5,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Martre_Outcrop_1_Sols205-209_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Martre_Outcrop_1_Sols205-209_R0_enhanced.jpg,1350,5
+Rochette,,6,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Seitah_1_Sols181-182_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Seitah_1_Sols181-182_R0_enhanced.jpg,850,6
+Wildcat_Ridge,,7,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Wildcat_Ridge_Sols518-534_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Wildcat_Ridge_Sols518-534_R0_enhanced.jpg,2100,7
+Skinner_Ridge,,8,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Skinner_Ridge_Sols484-492_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Skinner_Ridge_Sols484-492_R0_enhanced.jpg,2150,8
+Sid_pre_sampling,,9,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Sid_and_Chal_Rocks_Sols363-372_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Sid_and_Chal_Rocks_Sols363-372_R0_enhanced.jpg,850,9
+Hidden_Harbor,,,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Hidden_Harbor_Sols614-619_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Hidden_Harbor_Sols614-619_R0_enhanced.jpg,2000,10
+Three_Forks_Sample_Depot_1,,,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Three_Forks_Depot_1_Sol670_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Three_Forks_Depot_1_Sol670_R0_enhanced.jpg,1100,11
+Three_Forks_Sample_Depot_2,,,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Three_Forks_Depot_2_Sols690-692_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Three_Forks_Depot_2_Sols690-692_R0_enhanced.jpg,1100,12
+Belva_Crater,,,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Belva_Sols789-791_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Belva_Sols789-791_R0_enhanced.jpg,1000,13
+Bessieres_Island,,,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Bessieres_Island_Margin_Unit_Z34_Sols1028-1039_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Bessieres_Island_Margin_Unit_Z34_Sols1028-1039_R0_enhanced.jpg,1250,14
+Octavia_E_Butler_Landing_Site,na,,https://mcz-images.sese.asu.edu/Mastcam-Z_Landing_Site_Sols03-11_Z034_L0_enhanced.jpg,https://mcz-images.sese.asu.edu/Mastcam-Z_Landing_Site_Sols03-11_Z034_R0_enhanced.jpg,800,
+Bunsen_Peak,,,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Bunsen_Peak_Z34_Sols1074-1082_L0_enhanced.jpg,http://mcz-images.sese.asu.edu/Mastcam-Z_360_Bunsen_Peak_Z34_Sols1074-1082_R0_enhanced.jpg,1250,15

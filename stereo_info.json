@@ -1,0 +1,198 @@
+[
+  {
+    "site_name": "Van Zyl Outlook",
+    "compass_rotation": 0,
+    "start_rotation": 180,
+    "left_stereo_src": "stereos/Van zyl overlook_left.jpg",
+    "right_stereo_src": "stereos/Van zyl overlook_right.jpg"
+  },
+  {
+    "site_name": "Roubion",
+    "compass_rotation": 0,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0156 Roubion_left.jpg",
+    "right_stereo_src": "stereos/Sol 0156 Roubion_right.jpg"
+  },
+  {
+    "site_name": "Rochette",
+    "compass_rotation": 150,
+    "start_rotation": 150,
+    "left_stereo_src": "stereos/Sol 0181 Rochette_left.jpg",
+    "right_stereo_src": "stereos/Sol 0181 Rochette_right.jpg"
+  },
+  {
+    "site_name": "Matra Bastide",
+    "compass_rotation": 180,
+    "start_rotation": 20,
+    "left_stereo_src": "stereos/Sol 0205 Matra Bastide_left.jpg",
+    "right_stereo_src": "stereos/Sol 0205 Matra Bastide_right.jpg"
+  },
+  {
+    "site_name": "Village Seitah",
+    "compass_rotation": 180,
+    "start_rotation": -90,
+    "left_stereo_src": "stereos/Sol 0213 Village Seitah_left.jpg",
+    "right_stereo_src": "stereos/Sol 0213 Village Seitah_right.jpg"
+  },
+  {
+    "site_name": "Issole Seitah, pre-sampling",
+    "compass_rotation": 20,
+    "start_rotation": -60,
+    "left_stereo_src": "stereos/Sol 0288 Issole Seitah, pre-sampling_left.jpg",
+    "right_stereo_src": "stereos/Sol 0288 Issole Seitah, pre-sampling_right.jpg"
+  },
+  {
+    "site_name": "Issole Seitah, post-sampling",
+    "compass_rotation": 20,
+    "start_rotation": -60,
+    "left_stereo_src": "stereos/Sol 0320 Issole Seitah, post-sampling_left.jpg",
+    "right_stereo_src": "stereos/Sol 0320 Issole Seitah, post-sampling_right.jpg"
+  },
+  {
+    "site_name": "Adziilii Crater",
+    "compass_rotation": 0,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0356 Adziilii Crater_left.jpg",
+    "right_stereo_src": "stereos/Sol 0356 Adziilii Crater_right.jpg"
+  },
+  {
+    "site_name": "Sid",
+    "compass_rotation": 20,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0363 Sid, pre-sampling_left.jpg",
+    "right_stereo_src": "stereos/Sol 0363 Sid, pre-sampling_right.jpg"
+  },
+  {
+    "site_name": "Rose River Falls",
+    "compass_rotation": 0,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0454 Rose River Falls_left.jpg",
+    "right_stereo_src": "stereos/Sol 0454 Rose River Falls_right.jpg"
+  },
+  {
+    "site_name": "Rockytop Scarp",
+    "compass_rotation": 90,
+    "start_rotation": -90,
+    "left_stereo_src": "stereos/Sol 0466 Rockytop Scarp_left.jpg",
+    "right_stereo_src": "stereos/Sol 0466 Rockytop Scarp_right.jpg"
+  },
+  {
+    "site_name": "Skinner Ridge",
+    "compass_rotation": 200,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0484 Skinner Ridge_left.jpg",
+    "right_stereo_src": "stereos/Sol 0484 Skinner Ridge_right.jpg"
+  },
+  {
+    "site_name": "Wildcat Ridge",
+    "compass_rotation": 190,
+    "start_rotation": 90,
+    "left_stereo_src": "stereos/Sol 0518 Wildcat Ridge_left.jpg",
+    "right_stereo_src": "stereos/Sol 0518 Wildcat Ridge_right.jpg"
+  },
+  {
+    "site_name": "Amalik Enchanged Lake",
+    "compass_rotation": 20,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0566 Amalik Enchanged Lake_left.jpg",
+    "right_stereo_src": "stereos/Sol 0566 Amalik Enchanged Lake_right.jpg"
+  },
+  {
+    "site_name": "Hidden Harbor",
+    "compass_rotation": 120,
+    "start_rotation": 10,
+    "left_stereo_src": "stereos/Sol 0614 Hidden Harbor_left.jpg",
+    "right_stereo_src": "stereos/Sol 0614 Hidden Harbor_right.jpg"
+  },
+  {
+    "site_name": "Three Forks Sample Depot 1",
+    "compass_rotation": 190,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0670 Three Forks Sample Depot 1_left.jpg",
+    "right_stereo_src": "stereos/Sol 0670 Three Forks Sample Depot 1_right.jpg"
+  },
+  {
+    "site_name": "Three Forks Sample Depot 2",
+    "compass_rotation": 90,
+    "start_rotation": 40,
+    "left_stereo_src": "stereos/Sol 0690 Three Forks Sample Depot 2_left.jpg",
+    "right_stereo_src": "stereos/Sol 0690 Three Forks Sample Depot 2_right.jpg"
+  },
+  {
+    "site_name": "Belva Crater",
+    "compass_rotation": 40,
+    "start_rotation": -30,
+    "left_stereo_src": "stereos/Sol 0789 Belva Crater_left.jpg",
+    "right_stereo_src": "stereos/Sol 0789 Belva Crater_right.jpg"
+  },
+  {
+    "site_name": "Stone Man Pass",
+    "compass_rotation": 130,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0817 Stone Man Pass_left.jpg",
+    "right_stereo_src": "stereos/Sol 0817 Stone Man Pass_right.jpg"
+  },
+  {
+    "site_name": "Snowdrift Peak",
+    "compass_rotation": 0,
+    "start_rotation": -90,
+    "left_stereo_src": "stereos/Sol 0840 Snowdrift Peak_left.jpg",
+    "right_stereo_src": "stereos/Sol 0840 Snowdrift Peak_right.jpg"
+  },
+  {
+    "site_name": "Lookout Mountain, Mount Meeker",
+    "compass_rotation": 30,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0857 Lookout Mountain, Mount Meeker_left.jpg",
+    "right_stereo_src": "stereos/Sol 0857 Lookout Mountain, Mount Meeker_right.jpg"
+  },
+  {
+    "site_name": "Dream Lake",
+    "compass_rotation": 0,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0873 Dream Lake_left.jpg",
+    "right_stereo_src": "stereos/Sol 0873 Dream Lake_right.jpg"
+  },
+  {
+    "site_name": "Howard Mountain",
+    "compass_rotation": 0,
+    "start_rotation": 180,
+    "left_stereo_src": "stereos/Sol 0889 Howard Mountain_left.jpg",
+    "right_stereo_src": "stereos/Sol 0889 Howard Mountain_right.jpg"
+  },
+  {
+    "site_name": "Flat Point",
+    "compass_rotation": 0,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 0995 Flat Point_left.jpg",
+    "right_stereo_src": "stereos/Sol 0995 Flat Point_right.jpg"
+  },
+  {
+    "site_name": "Bunbury Margin Unit",
+    "compass_rotation": 60,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 1009 Bunbury Margin Unit_left.jpg",
+    "right_stereo_src": "stereos/Sol 1009 Bunbury Margin Unit_right.jpg"
+  },
+  {
+    "site_name": "Bessieres Island",
+    "compass_rotation": 150,
+    "start_rotation": 0,
+    "left_stereo_src": "stereos/Sol 1028 Bessieres Island_left.jpg",
+    "right_stereo_src": "stereos/Sol 1028 Bessieres Island_right.jpg"
+  },
+  {
+    "site_name": "Bunsen Peak",
+    "compass_rotation": 200,
+    "start_rotation": -40,
+    "left_stereo_src": "stereos/Sol 1074 Bunsen Peak_left.jpg",
+    "right_stereo_src": "stereos/Sol 1074 Bunsen Peak_right.jpg"
+  },
+  {
+    "site_name": "Overlook Mountain",
+    "compass_rotation": 180,
+    "start_rotation": 60,
+    "left_stereo_src": "stereos/Sol 1155 Overlook Mountain_left.jpg",
+    "right_stereo_src": "stereos/Sol 1155 Overlook Mountain_right.jpg"
+  }
+]
