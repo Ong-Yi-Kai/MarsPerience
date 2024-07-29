@@ -1,6 +1,6 @@
 # MarsPerience
 
-This project aims to setup a virtual reality experience that show cases stereoscopic 360 images of Mars at the sample collection site. This VR environment is made using [Aframe](https://github.com/aframevr/aframe) and we used the packages [aframe-stereo-component](https://github.com/c-frame/aframe-stereo-component?tab=readme-ov-file) and [aframe-troika-text](https://github.com/lojjic/aframe-troika-text) to display the stereo and text respectively. This is currently hosted on glitch at [MarsPerience]([https://glitch.com/~mars-stereo-tour](https://glitch.com/~marsperience-))
+This project aims to setup a virtual reality experience that show cases stereoscopic 360 images of Mars at the sample collection site. This VR environment is made using [Aframe](https://github.com/aframevr/aframe) and we used the packages [aframe-stereo-component](https://github.com/c-frame/aframe-stereo-component?tab=readme-ov-file) and [aframe-troika-text](https://github.com/lojjic/aframe-troika-text) to display the stereo and text respectively. This is currently hosted on glitch at [MarsPerience](https://glitch.com/~marsperience-)
 
 
 ## To develop with oculus quest
