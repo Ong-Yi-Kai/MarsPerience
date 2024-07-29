@@ -1,6 +1,7 @@
 # MarsPerience
 
-This project aims to setup a virtual reality experience that show cases stereoscopic 360 images of Mars at the sample collection site. This VR environment is made using [Aframe](https://github.com/aframevr/aframe) and we used the packages [aframe-stereo-component](https://github.com/c-frame/aframe-stereo-component?tab=readme-ov-file) and [aframe-troika-text](https://github.com/lojjic/aframe-troika-text) to display the stereo and text respectively. 
+This project aims to setup a virtual reality experience that show cases stereoscopic 360 images of Mars at the sample collection site. This VR environment is made using [Aframe](https://github.com/aframevr/aframe) and we used the packages [aframe-stereo-component](https://github.com/c-frame/aframe-stereo-component?tab=readme-ov-file) and [aframe-troika-text](https://github.com/lojjic/aframe-troika-text) to display the stereo and text respectively. This is currently hosted on glitch at [MarsPerience]([https://glitch.com/~mars-stereo-tour](https://glitch.com/~marsperience-))
+
 
 ## To develop with oculus quest
 
@@ -11,4 +12,4 @@ Note, the developer needs to first install ADB and specify the path to ```adb.ex
 To duplicate the what is seen on the ocuclus and to inspect the browser, open a google chrome browser and go to ```chrome://inspect/#devices```.
 
 ## Credits
-This work is done by Christian Tate, Yi Kai Ong and Jonathan Joseph from the department of Astronomy at Cornell University. 
+This work was done by Christian Tate, Yi Kai Ong and Jonathan Joseph from the department of Astronomy at Cornell University. 
