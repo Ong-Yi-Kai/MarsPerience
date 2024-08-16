@@ -134,6 +134,17 @@ AFRAME.registerComponent("button-nav", {
 
     el.addEventListener("xbuttondown", this.debouncedPrevStereo);
     // el.addEventListener("gripdown", this.debouncedPrevStereo);
+
+    // For desktop navigation
+    document.addEventListener("keydown", (evt) => {
+      if (evt.key === "ArrowRight") {
+        // console.log("Right arrow down")
+        this.debouncedNextStereo();
+      } else if (evt.key === "ArrowLeft") {
+        // console.log("Left arrow down")
+        this.debouncedPrevStereo();
+      }
+    });
   },
   remove: function () {
     this.el.addEventListener("abuttondown", this.debouncedNextStereo);
